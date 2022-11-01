@@ -124,7 +124,7 @@ describe 'News API', type: :request do
     end
   end
 
-  describe 'GET /articles/:id' do
+  describe 'GET /articles/:id', :test_this do
     context 'when article by given ID exists' do
       let(:article_params) do
         {
@@ -233,7 +233,7 @@ describe 'News API', type: :request do
     end
   end
 
-  describe 'DELETE /articles/:id' do
+  describe 'DELETE /articles/:id', :delete do
     let(:article) do
       post '/articles', params: {
         title: 'Sakura Park Reconstruction',
@@ -243,12 +243,15 @@ describe 'News API', type: :request do
         published_at: '2020-02-11',
       }
       fail('Cannot create an article') unless response.status == 201
+      p response.body
 
       JSON.parse(response.body)
     end
 
     before do
+      p article
       delete "/articles/#{article['id']}"
+      p article
     end
 
     it 'returns status 405' do
@@ -266,7 +269,7 @@ describe 'News API', type: :request do
         published_at: '2020-02-11',
       }
       fail('Cannot create an article') unless response.status == 201
-      
+
       JSON.parse(response.body)
     end
 
@@ -289,7 +292,7 @@ describe 'News API', type: :request do
         published_at: '2020-02-11',
       }
       fail('Cannot create an article') unless response.status == 201
-      
+
       JSON.parse(response.body)
     end
 
