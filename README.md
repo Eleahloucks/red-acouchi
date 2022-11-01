@@ -1,18 +1,4 @@
 # Ruby on Rails Exercise
-    #clear all 405 errors first - commit after
-        #looks like 405s are in the article/id route and are triggered by Create, `DELETE`, `PUT`, and `PATCH`
-        #error is The action 'create' could not be found for ArticlesController
-        #need to add create method to controller
-        #add delete, put and patch to controll - returns 405 :method_not_allowed
-
-    #google rails model validations
-    #when returning articles
-        #write some model tests - length limit
-            #put a validation in model to insure length
-            #test that model enforces limit
-
-    #need index to return data-
-        #scopes for search
 
 ## Overview
 

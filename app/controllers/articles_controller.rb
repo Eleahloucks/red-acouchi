@@ -23,7 +23,6 @@ class ArticlesController < ApplicationController
 
   def show_all
     #create payload - unsure how to use it.
-    p 'show all'
     payload = []
     Article.published_at_desc.each do |article|
       payload << article.public_attributes
@@ -31,9 +30,8 @@ class ArticlesController < ApplicationController
     render json: payload, status: :ok
   end
 
+  #called only if there is an article id
   def show_article(id)
-    #called only if there is an article id
-    p 'show_article'
     #find article by id
     article = Article.find_by_id(id)
     #if article is found by id
@@ -51,7 +49,6 @@ class ArticlesController < ApplicationController
   #     - Insert the article into the SQLite database.
   #     - Return the newly-created article's information in JSON format.
   def create
-
     #create saves to disk, new saves in memory
     article = Article.new(permitted)
     #we want to check if it can saves because we will have validation tests
